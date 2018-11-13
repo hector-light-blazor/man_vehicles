@@ -1,0 +1,106 @@
+import 'package:flutter/material.dart';
+import 'package:man_vehicles/firstPage.dart';
+
+
+class MyHomePage extends StatelessWidget {
+
+
+  List<Widget> _buildGridTiles(BuildContext context) {
+    List<Container> containers = new List<Container>.generate(10,
+            (int index)
+        {
+          return new Container(child: Row(children: [
+            Expanded(child: Column( crossAxisAlignment: CrossAxisAlignment.start, children: [
+              GestureDetector(onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => firstPage('Page $index')),
+                );
+
+              }, child:
+              Image.network("https://media.tenor.com/images/e581cd49609fbbc5d3d9e7b79c4b9aad/tenor.png")
+              ), Text("Pickachu")
+            ]))])
+
+          );
+
+
+
+
+        });
+    return containers;
+
+
+  }
+
+  List<Widget> _buildGridTiles2(BuildContext cont) {
+    List<Container> containers = new List<Container>.generate(2,
+            (int index) {
+
+          return new Container(child:  Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(bottom: 5.0),
+                      child: Image.network("https://media.tenor.com/images/e581cd49609fbbc5d3d9e7b79c4b9aad/tenor.png"),
+                    ),
+                    Text(
+                      'Pickachu',
+                      style: TextStyle(
+                        color: Colors.grey[500],
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+
+            ],
+          ),
+          );
+
+        }
+
+    );
+    return containers;
+
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+        return new Scaffold(
+
+          body: DefaultTabController(length: 3,
+              child: Scaffold(
+                  appBar: AppBar(
+                      bottom: TabBar(tabs: [
+                        Tab(icon: Icon(Icons.home)),
+                        Tab(icon: Icon(Icons.new_releases)),
+                        Tab(icon: Icon(Icons.camera))
+
+                      ]),
+                      title: Text('E-Comms Vehicles')
+
+                  ),
+                  body: TabBarView( children: [
+                    GridView.count(crossAxisCount: 2,
+                        children: _buildGridTiles(context)
+                    ),
+                    GridView.count(crossAxisCount: 2,
+                        children: _buildGridTiles2(context)
+                    ),
+                  ],
+
+                  )
+              )
+          ),
+
+        );
+      }
+  }
+
+
