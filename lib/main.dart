@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'MyHomePage';
+import 'package:man_vehicles/homePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: new MyHomePage(),
+      home: new homePage(),
     );
   }
 }
